@@ -1,0 +1,16 @@
+{
+  "name": "@repo/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "tailwind.config.js",
+    "globals.css",
+    "postcss.config.js"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^4.11.1",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3"
+  }
+}
