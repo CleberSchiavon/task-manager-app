@@ -1,8 +1,14 @@
 {
   "extends": "tsconfig/nestjs.json",
   "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
     "outDir": "./dist",
-    "baseUrl": "./",
-    "strictPropertyInitialization": false
+    "paths": {
+      "~/*": ["./src/*"],
+      "types/*": ["./src/types/*"],
+      "shared/*": ["./src/shared/*"],
+      "modules/*": ["./src/modules/*"]
+    }
   }
 }
