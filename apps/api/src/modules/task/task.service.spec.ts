@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TaskService } from './task.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { TaskEntity } from './entities/task.entity';
+import { Tasks } from './entities/task.entity';
 import { Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -9,7 +9,7 @@ import { HttpException } from '@nestjs/common';
 
 describe('TaskService', () => {
   let service: TaskService;
-  let repository: Repository<TaskEntity>;
+  let repository: Repository<Tasks>;
 
   const mockTaskRepository = {
     create: jest.fn(),
@@ -25,14 +25,14 @@ describe('TaskService', () => {
       providers: [
         TaskService,
         {
-          provide: getRepositoryToken(TaskEntity),
+          provide: getRepositoryToken(Tasks),
           useValue: mockTaskRepository,
         },
       ],
     }).compile();
 
     service = module.get<TaskService>(TaskService);
-    repository = module.get<Repository<TaskEntity>>(getRepositoryToken(TaskEntity));
+    repository = module.get<Repository<Tasks>>(getRepositoryToken(Tasks));
   });
 
   afterEach(() => {

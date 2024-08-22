@@ -3,7 +3,7 @@ import { TaskController } from './task.controller';
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { TaskEntity } from './entities/task.entity';
+import { Tasks } from './entities/task.entity';
 import { HttpException } from '@nestjs/common';
 
 describe('TaskController', () => {
@@ -40,7 +40,7 @@ describe('TaskController', () => {
   describe('create', () => {
     it('should create a task and return it', async () => {
       const createTaskDto: CreateTaskDto = { title: 'Test Task', description: 'Test Description' };
-      const task: TaskEntity = { id: 1, ...createTaskDto };
+      const task: Tasks = { id: 1, ...createTaskDto };
 
       mockTaskService.create.mockResolvedValue(task);
 
@@ -52,7 +52,7 @@ describe('TaskController', () => {
 
   describe('findAll', () => {
     it('should return an array of tasks', async () => {
-      const tasks: TaskEntity[] = [{ id: 1, title: 'Test Task', description: 'Test Description' }];
+      const tasks: Tasks[] = [{ id: 1, title: 'Test Task', description: 'Test Description' }];
 
       mockTaskService.findAll.mockResolvedValue(tasks);
 
@@ -64,7 +64,7 @@ describe('TaskController', () => {
 
   describe('findOne', () => {
     it('should return a task by id', async () => {
-      const task: TaskEntity = { id: 1, title: 'Test Task', description: 'Test Description' };
+      const task: Tasks = { id: 1, title: 'Test Task', description: 'Test Description' };
       mockTaskService.findOne.mockResolvedValue(task);
 
       const result = await controller.findOne('1');
@@ -83,8 +83,8 @@ describe('TaskController', () => {
   describe('update', () => {
     it('should update and return the task', async () => {
       const updateTaskDto: UpdateTaskDto = { title: 'Updated Title' };
-      const existingTask: TaskEntity = { id: 1, title: 'Old Title', description: 'Old Description' };
-      const updatedTask: TaskEntity = { ...existingTask, ...updateTaskDto };
+      const existingTask: Tasks = { id: 1, title: 'Old Title', description: 'Old Description' };
+      const updatedTask: Tasks = { ...existingTask, ...updateTaskDto };
 
       mockTaskService.update.mockResolvedValue(updatedTask);
 
@@ -96,7 +96,7 @@ describe('TaskController', () => {
 
   describe('remove', () => {
     it('should remove and return the task', async () => {
-      const task: TaskEntity = { id: 1, title: 'Test Task', description: 'Test Description' };
+      const task: Tasks = { id: 1, title: 'Test Task', description: 'Test Description' };
       mockTaskService.remove.mockResolvedValue(task);
 
       const result = await controller.remove('1');

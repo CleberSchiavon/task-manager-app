@@ -36,9 +36,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-# TypeScript declaration files
-*.d.ts
-*.d.ts.map
-*.js
-*.js.map

@@ -9,7 +9,6 @@ import { HTTPLoggerInterceptor } from './middleware/http.logger.middleware';
 import { TaskModule } from './modules/task/task.module';
 import { TaskController } from './modules/task/task.controller';
 import { TaskService } from './modules/task/task.service';
-import { TaskEntity } from './modules/task/entities/task.entity';
 
 @Module({
   imports: [
@@ -21,7 +20,7 @@ import { TaskEntity } from './modules/task/entities/task.entity';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       synchronize: true,
-      entities: [TaskEntity],
+      autoLoadEntities: true,
       logging: true
     }),
     TaskModule,

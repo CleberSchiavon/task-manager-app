@@ -1,7 +1,7 @@
 import { Controller, Get, HttpStatus } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { HealthService } from './health.service';
-import { HealthReturnType } from 'types/Health/index';
+import { HealthReturnType } from '~/types/Health/';
 
 @Controller('health')
 export class HealthController {

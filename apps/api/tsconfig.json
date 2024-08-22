@@ -8,7 +8,10 @@
       "~/*": ["./src/*"],
       "types/*": ["./src/types/*"],
       "shared/*": ["./src/shared/*"],
-      "modules/*": ["./src/modules/*"]
-    }
+      "modules/*": ["./src/modules/*"],
+    },
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }
