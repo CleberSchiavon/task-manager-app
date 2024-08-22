@@ -1,14 +1,18 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import {ConfigModule} from '@nestjs/config'
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { HealthController } from './modules/health/health.controller';
-import { HealthService } from './modules/health/health.service';
+import {
+  AuthModule,
+  TaskModule,
+  UsersModule,
+  HealthController,
+  TaskController,
+  HealthService,
+  TaskService,
+} from './modules';
 import { HTTPLoggerInterceptor } from './middleware/http.logger.middleware';
-import { TaskModule } from './modules/task/task.module';
-import { TaskController } from './modules/task/task.controller';
-import { TaskService } from './modules/task/task.service';
 
 @Module({
   imports: [
@@ -21,9 +25,11 @@ import { TaskService } from './modules/task/task.service';
       database: process.env.DB_DATABASE,
       synchronize: true,
       autoLoadEntities: true,
-      logging: true
+      logging: true,
     }),
     TaskModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController, HealthController, TaskController],
   providers: [AppService, HealthService, TaskService],
