@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { LoggerReturn, LoggerTypes } from './types/Http/Logger';
 import { AppLogger } from './shared/utils/AppLogger';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -20,6 +21,10 @@ async function bootstrap() {
   const apiPort = 3002;
   SwaggerModule.setup('swagger', app, document);
 
+  app.useGlobalPipes(
+    new ValidationPipe({ whitelist: true }),
+  );
+  
   await app
     .listen(apiPort)
     .then(() =>
