@@ -11,14 +11,42 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "inputs": ["DB_HOST", "DB_PORT", "DB_USERNAME", "DB_PASSWORD", "DB_DATABASE", ".env"],
-      "env": ["DB_HOST", "DB_PORT", "DB_USERNAME", "DB_PASSWORD", "DB_DATABASE"]
+      "inputs": [
+        "DB_HOST",
+        "DB_PORT",
+        "DB_USERNAME",
+        "DB_PASSWORD",
+        "DB_DATABASE",
+        ".env"
+      ],
+      "env": [
+        "DB_HOST",
+        "DB_PORT",
+        "DB_USERNAME",
+        "DB_PASSWORD",
+        "DB_DATABASE",
+        "API_JWT_SECRET"
+      ]
     },
     "api:dev": {
       "cache": false,
       "persistent": true,
-      "inputs": ["DB_HOST", "DB_PORT", "DB_USERNAME", "DB_PASSWORD", "DB_DATABASE", ".env"],
-      "env": ["DB_HOST", "DB_PORT", "DB_USERNAME", "DB_PASSWORD", "DB_DATABASE"]
+      "inputs": [
+        "DB_HOST",
+        "DB_PORT",
+        "DB_USERNAME",
+        "DB_PASSWORD",
+        "DB_DATABASE",
+        ".env"
+      ],
+      "env": [
+        "DB_HOST",
+        "DB_PORT",
+        "DB_USERNAME",
+        "DB_PASSWORD",
+        "DB_DATABASE",
+        "API_JWT_SECRET"
+      ]
     }
   }
 }
