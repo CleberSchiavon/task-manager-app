@@ -11,6 +11,8 @@ import {
   TaskController,
   HealthService,
   TaskService,
+  AuthController,
+  AuthService,
 } from './modules';
 import { HTTPLoggerInterceptor } from './middleware/http.logger.middleware';
 
@@ -30,9 +32,11 @@ import { HTTPLoggerInterceptor } from './middleware/http.logger.middleware';
     TaskModule,
     AuthModule,
     UsersModule,
+    AuthModule
   ],
-  controllers: [AppController, HealthController, TaskController],
-  providers: [AppService, HealthService, TaskService],
+  controllers: [AppController, HealthController, TaskController, AuthController],
+  providers: [AppService, HealthService, TaskService, AuthService],
+  
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

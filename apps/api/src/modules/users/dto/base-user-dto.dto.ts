@@ -7,17 +7,14 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { IsMatching } from '~/shared/utils/CustomValidators';
 
 export class BaseUser {
   @ApiProperty()
   @IsString()
-  id?: string;
-
-  @ApiProperty()
-  @IsString()
   @MinLength(2)
   @MaxLength(20)
-  username?: string;
+  username: string;
 
   @ApiProperty()
   @IsString()
@@ -35,6 +32,6 @@ export class BaseUser {
   @IsString()
   @MinLength(4)
   @MaxLength(20)
-  @Matches('password')
+  @IsMatching('password')
   confirmPassword?: string;
 }
