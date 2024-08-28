@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "api:dev": "dotenv -- turbo run dev --filter=./apps/api/",
     "front:dev": "turbo run dev --filter=./apps/web/",
     "front:storybook": "turbo run storybook --filter=./apps/web/",
     "lint": "turbo run lint",
@@ -12,6 +13,7 @@
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
+    "dotenv-cli": "^7.4.2",
     "eslint": "^7.32.0",
     "@repo/eslint-config-custom": "workspace:*",
     "prettier": "^2.5.1",

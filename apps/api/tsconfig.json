@@ -1,7 +1,17 @@
 {
   "extends": "tsconfig/nestjs.json",
   "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
     "outDir": "./dist",
-    "baseUrl": "./"
+    "paths": {
+      "~/*": ["./src/*"],
+      "types/*": ["./src/types/*"],
+      "shared/*": ["./src/shared/*"],
+      "modules/*": ["./src/modules/*"],
+    },
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }
