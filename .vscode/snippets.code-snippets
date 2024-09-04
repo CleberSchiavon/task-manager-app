@@ -1,0 +1,27 @@
+{
+  "Storybook New Story": {
+    "prefix": "sns",
+    "body": [
+      "import type { Meta, StoryObj } from \"@storybook/react\";",
+      "",
+      "import ${1:ComponentName} from \"./index\";",
+      "${2:// Import necessary icons or other dependencies}",
+      "",
+      "const meta: Meta<typeof ${1:ComponentName}> = {",
+      "  title: \"Components/${1:ComponentName}\",",
+      "  component: ${1:ComponentName},",
+      "  tags: [\"autodocs\"],",
+      "};",
+      "",
+      "export default meta;",
+      "type Story = StoryObj<typeof ${1:ComponentName}>;",
+      "",
+      "export const ${3:Default}: Story = {",
+      "  args: {",
+      "    ${4:// Provide default props for the story}",
+      "  },",
+      "};"
+    ],
+    "description": "Creates a Storybook story for a component"
+  }
+}
