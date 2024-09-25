@@ -1,7 +1,10 @@
-export default function Page(): JSX.Element {
+
+import {Button} from '@nextui-org/button'; 
+
+export default function Page() {
   return (
-    <>
-    <p className="font-bold">Page</p>
-    </>
-  );
+    <div>
+      <Button color="primary">Click</Button>
+    </div>
+  )
 }
