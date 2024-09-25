@@ -8,7 +8,7 @@ export class AuthService {
   constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService) {}
 
   async login(email: string, password: string) {
-    const user = await this.usersService.findOneBy(email);
+    const user = await this.usersService.findOneByEmail(email);
     
     if (!user || user.password !== password) {
       throw new UnauthorizedException('Invalid email or password.');
@@ -23,6 +23,12 @@ export class AuthService {
   }
 
   async signUp(createUserDto: CreateUserDto) {
+    const existingUser = await this.usersService.findOneByUsername(createUserDto.username);
+    const existingEmail = await this.usersService.findOneByEmail(createUserDto.email);
+
+    if (existingEmail || existingUser) {
+      throw new UnauthorizedException('User already exists.');
+    }
     const newUser = await this.usersService.create(createUserDto);
     return newUser;
   }

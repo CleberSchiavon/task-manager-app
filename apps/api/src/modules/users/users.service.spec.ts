@@ -39,20 +39,48 @@ describe('UsersService', () => {
       };
       jest.spyOn(usersRepository, 'findOne').mockResolvedValue(mockUser);
 
-      const user = await usersService.findOneBy('test@example.com');
+      const user = await usersService.findOneByEmail('test@example.com');
       expect(user).toEqual(mockUser);
       expect(usersRepository.findOne).toHaveBeenCalledWith({
         email: 'test@example.com',
       });
     });
 
-    it('should return undefined if user is not found', async () => {
+    it('should return undefined if user email is not found', async () => {
       jest.spyOn(usersRepository, 'findOne').mockResolvedValue(undefined);
 
-      const user = await usersService.findOneBy('nonexistent@example.com');
+      const user = await usersService.findOneByEmail('nonexistent@example.com');
       expect(user).toBeUndefined();
       expect(usersRepository.findOne).toHaveBeenCalledWith({
         email: 'nonexistent@example.com',
+      });
+    });
+
+    it('should return a user by username', async () => {
+      const mockUser = {
+        id: 1,
+        email: 'test@example.com',
+        username: 'testuser',
+        password: 'password',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+      jest.spyOn(usersRepository, 'findOne').mockResolvedValue(mockUser);
+
+      const user = await usersService.findOneByUsername('testuser');
+      expect(user).toEqual(mockUser);
+      expect(usersRepository.findOne).toHaveBeenCalledWith({
+        username: 'testuser',
+      });
+    });
+
+    it('should return undefined if username is not found', async () => {
+      jest.spyOn(usersRepository, 'findOne').mockResolvedValue(undefined);
+
+      const user = await usersService.findOneByUsername('testeteste');
+      expect(user).toBeUndefined();
+      expect(usersRepository.findOne).toHaveBeenCalledWith({
+        username: 'testeteste',
       });
     });
   });
