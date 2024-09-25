@@ -11,7 +11,7 @@ const CreateUserSchema = z.object({
 })
 .refine(({ password, confirmPassword}) => password === confirmPassword, {
   message: "As senhas não coincidem",
-  path: ["confirm_password"]
+  path: ["confirmPassword"]
 })
 
 export type CreateUser = z.infer<typeof CreateUserSchema>
