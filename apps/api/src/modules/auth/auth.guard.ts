@@ -8,11 +8,13 @@ import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 import { Reflector } from '@nestjs/core';
 import { IS_PUBLIC_KEY } from './strategy';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
   constructor(
     private readonly jwtService: JwtService,
+    private readonly configService: ConfigService,
     private readonly reflector: Reflector,
   ) {}
 
@@ -28,10 +30,8 @@ export class JwtAuthGuard implements CanActivate {
 
     const request = context.switchToHttp().getRequest<Request>();
     const authToken = this.extractTokenFromAuthorizationHeader(request);
-    const jwtSecretKey = process.env.API_JWT_SECRET;
+    const jwtSecretKey = this.configService.get("API_JWT_SECRET");
 
-    console.log(authToken)
-    console.log(jwtSecretKey)
 
     if (!authToken) {
       throw new UnauthorizedException('Authorization token is missing.');
