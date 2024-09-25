@@ -7,6 +7,7 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   const swaggerConfig = new DocumentBuilder()
   .setTitle('Task Manager Api Swagger')
   .setDescription('Bem vindo a documentação dessa API no Swagger!')

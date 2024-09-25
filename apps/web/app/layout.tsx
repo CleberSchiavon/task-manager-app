@@ -15,7 +15,9 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     <html lang="en">
       <body className={inter.className}>
         <Providers>
+          <main className="w-full">
           {children}
+          </main>
         </Providers>
       </body>
     </html>
